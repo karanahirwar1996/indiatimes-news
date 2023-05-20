@@ -157,3 +157,4 @@ def india_times(page_count=5):
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
     return final
+india_times()
