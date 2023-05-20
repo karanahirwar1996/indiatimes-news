@@ -71,19 +71,19 @@ def india_times(page_count=5):
        page = 1
 
        while page <= page_count:
-                res = requests.get(url, params={'page': page})
-                soup = BeautifulSoup(res.content, features="html.parser")
+               res = requests.get(url, params={'page': page})
+               soup = BeautifulSoup(res.content, features="html.parser")
 
     # Check if there are no more articles
-                if not soup.find_all("div", {"class": "eachStory"}):
+               if not soup.find_all("div", {"class": "eachStory"}):
                                 break
 
-                for items in soup.find_all("div", {"class": "eachStory"}):
+               for items in soup.find_all("div", {"class": "eachStory"}):
                                 tag.append(items.find("a").text)
                                 href.append(base_url + items.find('a')['href'])
                                 date.append(extract_date(items.find('time',{"class":"date-format"}).text))
                                 time.append(extract_time(items.find('time',{"class":"date-format"}).text))
-                page += 1
+               page += 1
         data = pd.DataFrame({'Headline': tag, 'URL': href,"date":date,"Time":time})
         data['date'] = pd.to_datetime(data['date'], format='%d/%m/%Y')
 # Print the DataFrame
