@@ -18,9 +18,8 @@ def calculate_positivity_score(positive_count, negative_count):
 def predict_stock_sentiment(sentence):
     words = word_tokenize(sentence.lower())
     
-    positive_keywords = ["rise", "increase", "up", "bullish","growth","grow", "positive", "strong","Profit rises", "trimmed", "narrowed", "improved", "strengthening", "expand"]
-    negative_keywords = ["fall", "decrease", "down", "bearish", "negative", "fell", "losses","slump","loss",
-                         "lower", "dipped", "slowdown","plummeted","decline","plunges","Profit falls"]
+    positive_keywords = list(pd.read_csv("./positive-words.csv")['words'])
+    negative_keywords =list(pd.read_csv("./negative-words.csv")['words'])
     
     positive_count = 0
     negative_count = 0
