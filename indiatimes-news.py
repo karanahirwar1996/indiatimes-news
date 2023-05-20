@@ -102,7 +102,7 @@ def predict_stock_sentiment(sentence):
     filtered_df['Normal Score']=filtered_df['Headline'].apply(analyze_sentiment)
     final=filtered_df.loc[(filtered_df['Deep Score']>45)&(filtered_df['Normal Score']>=0)].reset_index(drop=True)
     sender_email = "karan.ahirwar1996@gmail.com"
-    receiver_email = ["anitaahirwar2112@gmail.com", sender_email]
+    receiver_email = list(pd.read_csv("./emaillist.csv")['mail'])
     password = "uccrgtqdnusrpmnk"
     table_html = final.to_html(index=False)
 
