@@ -49,28 +49,28 @@ def india_times(page_count=5):
        import smtplib
        from email.mime.text import MIMEText
        from email.mime.multipart import MIMEMultipart
-        def extract_date(date_string):
+       def extract_date(date_string):
                 date_string = date_string.replace(" IST", "")
                 datetime_obj = datetime.strptime(date_string, "%B %d, %Y, %I:%M %p")
                 formatted_date = datetime_obj.strftime("%d/%m/%Y")
                 return formatted_date
-        def extract_time(date_string):
+       def extract_time(date_string):
                 date_string = date_string.replace(" IST", "")
                 datetime_obj = datetime.strptime(date_string, "%B %d, %Y, %I:%M %p")
                 formatted_date = datetime_obj.strftime("%I:%M %p")
                 return formatted_date
-        current_date = datetime.now().date()
-        previous_date = current_date - timedelta(days=1)
+       current_date = datetime.now().date()
+       revious_date = current_date - timedelta(days=1)
 
-        url = 'https://economictimes.indiatimes.com/markets/stocks/earnings/news'
-        base_url = 'https://economictimes.indiatimes.com'
-        tag = []
-        href = []
-        date=[]
-        time=[]
-        page = 1
+       url = 'https://economictimes.indiatimes.com/markets/stocks/earnings/news'
+       base_url = 'https://economictimes.indiatimes.com'
+       tag = []
+       href = []
+       date=[]
+       time=[]
+       page = 1
 
-        while page <= page_count:
+       while page <= page_count:
                 res = requests.get(url, params={'page': page})
                 soup = BeautifulSoup(res.content, features="html.parser")
 
