@@ -143,6 +143,7 @@ def india_times(page_count=5):
 <body>
     <h1>Positive News - {current_date}</h1>
     {table}
+    <p>Best regards,<br>Karan Ahirwar</p>
 </body>
 </html>
 """
