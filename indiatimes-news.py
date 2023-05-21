@@ -101,7 +101,7 @@ def india_times(page_count=5):
         dip.append(predict_stock_sentiment(article_body) if article_body else None)
     filtered_df["Deep Score"]=dip
     filtered_df['Normal Score']=filtered_df['Headline'].apply(analyze_sentiment)
-    final=filtered_df.loc[(filtered_df['Deep Score']>45)&(filtered_df['Normal Score']>=0)].reset_index(drop=True)
+    final=filtered_df.loc[(filtered_df['Deep Score']>20)&(filtered_df['Normal Score']>=0)].reset_index(drop=True)
     sender_email = "karan.ahirwar1996@gmail.com"
     receiver_email = list(pd.read_csv("./emaillist.csv")['mail'])
     password = "uccrgtqdnusrpmnk"
